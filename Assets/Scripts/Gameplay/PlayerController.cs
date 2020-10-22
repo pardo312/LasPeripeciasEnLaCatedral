@@ -4,36 +4,37 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 3f;
+    public float speed = 1f;
     private SpriteRenderer spriteRender;
+	private Rigidbody2D rb2d;
+	private bool mirada = false;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRender = GetComponent<SpriteRenderer>();
-
+		rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            TolsaMove(false);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            TolsaMove(true);
-        }
+		float inputX = Input.GetAxis("Horizontal");
+		rb2d.velocity = new Vector2(inputX* speed, rb2d.velocity.y); //agregando velocidad
+		
+		if (inputX>0) {
+			mirada= false;
+		}
+		if (inputX<0){
+			mirada = true;
+		}
+		Flip();//para que el personaje gire a la direccion en que se mueve
     }
-
-    private void TolsaMove(bool girarIzqDer)
-    {
-        if ((!girarIzqDer ? spriteRender.flipX : !spriteRender.flipX))
-        { //para que el personaje gire al otro lado
-            spriteRender.flipX = girarIzqDer;
+	
+	private void Flip(){
+		if ((!mirada ? spriteRender.flipX : !spriteRender.flipX))
+        { 
+            spriteRender.flipX = mirada;
         }
-        transform.Translate(!girarIzqDer ? speed : -speed, 0, 0);
-        //aqui se llamara al triger de la animacion
-    }
+	}
 }
