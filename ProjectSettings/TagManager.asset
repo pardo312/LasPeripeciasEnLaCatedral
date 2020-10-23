@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cepillo
+  - Cincel
+  - Espatula
+  - Estatua
+  - Guantes
+  - Isopo
+  - Pincel
   layers:
   - Default
   - TransparentFX

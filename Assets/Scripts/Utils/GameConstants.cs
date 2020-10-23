@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class GameConstants
 {
-    public static string FallingItemsResourcesPath = "FallingItems";
+    public static string PickableFallingItemsResourcesPath = "PickableFallingItems";
 }

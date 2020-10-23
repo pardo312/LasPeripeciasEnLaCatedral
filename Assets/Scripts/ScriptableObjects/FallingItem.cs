@@ -5,6 +5,5 @@ public class FallingItem : ScriptableObject
 {
     public Sprite sprite;
     public float fallingSpeed;
-    public int amountToCollect;
-    public float pickupWeight;
+    public float spawnWaitSeconds;
 }

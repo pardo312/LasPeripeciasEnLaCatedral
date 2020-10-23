@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad07d68bd01aad944a78d31186bf0105, type: 3}
-  m_Name: Estatua
+  m_Script: {fileID: 11500000, guid: 97aa028e54457764e8cf5f218570bbc8, type: 3}
+  m_Name: Guantes
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9619b45e5d411294285b0fc1951a8c0f, type: 3}
-  fallingSpeed: 2
-  amountToCollect: 5
-  pickupWeight: 2
+  sprite: {fileID: 21300000, guid: 56e7cedf6b8543c41b0230097052d279, type: 3}
+  fallingSpeed: 1
+  spawnWaitSeconds: 1
+  amountToCollect: 1
+  pickupWeight: 1
