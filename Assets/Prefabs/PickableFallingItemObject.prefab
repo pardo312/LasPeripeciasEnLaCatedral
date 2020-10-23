@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6619942103844152033}
   - component: {fileID: 1240272298297469108}
   - component: {fileID: 2965082187030279717}
-  - component: {fileID: 3817459519458724758}
+  - component: {fileID: 4362248910246233140}
   m_Layer: 0
-  m_Name: FallingItemObject
+  m_Name: PickableFallingItemObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6666667, y: 2.02}
   m_EdgeRadius: 0
---- !u!114 &3817459519458724758
+--- !u!114 &4362248910246233140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7191479304657478613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad07d68bd01aad944a78d31186bf0105, type: 3}
+  m_Script: {fileID: 11500000, guid: cec88e9061d6f4144a845bdd553b81d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   gravityScale: 0
-  mass: 0
   spawnWaitSeconds: 0
+  mass: 0

@@ -7,20 +7,18 @@ public class FallingItemObject : MonoBehaviour
 
     public Sprite sprite;
     public float gravityScale;
-    public float mass;
 
     public float spawnWaitSeconds;
-    Timer spawnDelayTimer;
-    bool canBeSpawned;
+    private Timer spawnDelayTimer;
+    private bool canBeSpawned;
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
-    private void Start()
+    protected virtual void Start()
     {
         GetComponent<SpriteRenderer>().sprite = sprite;
 
         rb = GetComponent<Rigidbody2D>();
-        rb.mass = mass;
         rb.gravityScale = gravityScale;
 
         spawnDelayTimer = gameObject.AddComponent<Timer>();
