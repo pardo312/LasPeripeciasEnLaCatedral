@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aa028e54457764e8cf5f218570bbc8, type: 3}
   m_Name: Cincel
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a12de37dfe238d842bb6041ab40981b2, type: 3}
+  sprite: {fileID: 21300000, guid: de177ac9f4b50944783a748b34dea5c9, type: 3}
   fallingSpeed: 1
   spawnWaitSeconds: 1
   amountToCollect: 1

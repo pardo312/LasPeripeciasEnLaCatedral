@@ -11,6 +11,7 @@ TagManager:
   - Guantes
   - Isopo
   - Pincel
+  - Floor
   layers:
   - Default
   - TransparentFX

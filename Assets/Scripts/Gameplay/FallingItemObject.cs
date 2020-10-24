@@ -14,13 +14,15 @@ public class FallingItemObject : MonoBehaviour
 
     protected Rigidbody2D rb;
 
+    public bool CanBeSpawned
+    {
+        get { return canBeSpawned; }
+    }
+
     protected virtual void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = sprite;
-
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = gravityScale;
-
+        rb.gravityScale = 0;
         spawnDelayTimer = gameObject.AddComponent<Timer>();
         spawnDelayTimer.Duration = spawnWaitSeconds;
         spawnDelayTimer.AddTimerFinishedListener(HandleSpawnDelayTimerFinished);
@@ -31,5 +33,15 @@ public class FallingItemObject : MonoBehaviour
     private void HandleSpawnDelayTimerFinished()
     {
         canBeSpawned = true;
+        GetComponent<SpriteRenderer>().sprite = sprite;
+        rb.gravityScale = gravityScale;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Floor"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

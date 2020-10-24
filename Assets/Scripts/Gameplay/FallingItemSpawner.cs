@@ -8,13 +8,15 @@ public class FallingItemSpawner : MonoBehaviour
     [SerializeField]
     private GameObject pickableFallingItemObjectPrefab;
 
-    private GameObject[] fallingItemObjects;
+    private List<GameObject> fallingItemObjects;
 
     private FallingItem[] fallingItems;
     private PickableFallingItem[] pickableFallingItems;
     
-
     private int numberOfRepeatedItems = 2;
+
+    private Timer spawnDelayTimer;
+    int spawnDelaySeconds = 5;
 
     private void Awake()
     {
@@ -23,47 +25,53 @@ public class FallingItemSpawner : MonoBehaviour
 
     private void Start()
     {
-        foreach(GameObject gameObject in fallingItemObjects)
-        {
-            gameObject.transform.position = new Vector3(0, 7, 0);
-            gameObject.SetActive(true);
-        }
+        spawnDelayTimer = gameObject.AddComponent<Timer>();
+        spawnDelayTimer.AddTimerFinishedListener(SpawnObjects);
+        RunSpawnDelayTimer();
     }
 
     private void PopulateItems()
     {
-        fallingItems = Resources.LoadAll(GameConstants.FallingItemsResourcesPath, typeof(FallingItem)) as FallingItem[];
-        pickableFallingItems = Resources.LoadAll(GameConstants.PickableFallingItemsResourcesPath, typeof(FallingItem)) as PickableFallingItem[];
+        fallingItems = Resources.LoadAll<FallingItem>(GameConstants.FallingItemsResourcesPath);
+        pickableFallingItems = Resources.LoadAll<PickableFallingItem>(GameConstants.PickableFallingItemsResourcesPath);
+        fallingItemObjects = new List<GameObject>();
 
-        fallingItemObjects = new GameObject[(fallingItems.Length + pickableFallingItems.Length) * numberOfRepeatedItems];
-
-        for (int i = 0; i < pickableFallingItems.Length; i++)
-        {
-            for(int j = 0; j < numberOfRepeatedItems; j++)
-            {
-                GameObject currentObject = Instantiate(fallingItemObjectPrefab);
-                currentObject.SetActive(false);
-                FallingItemObject currentFallingItemObject = currentObject.GetComponent<FallingItemObject>();
-
-                PickableFallingItem currentPickableFallingItem = pickableFallingItems[i];
-
-                SetFallingItemObjectAttributes(currentFallingItemObject, currentPickableFallingItem);
-                //currentFallingItemObject.mass = currentPickableFallingItem.pickupWeight;
-                
-
-                fallingItemObjects[j] = currentObject;
-            }
-        }
+        InstantiateFallingItems();
+        InstantiatePickableFallingItems();
     }
 
     private void InstantiateFallingItems()
     {
         for (int i = 0; i < fallingItems.Length; i++)
         {
+            FallingItem currentFallingItem = fallingItems[i];
+
             for (int j = 0; j < numberOfRepeatedItems; j++)
             {
-                GameObject currentObject = Instantiate(fallingItemObjectPrefab);
-                currentObject.SetActive(false);
+                GameObject newObject = InstantiateObject(fallingItemObjectPrefab);
+                FallingItemObject currentFallingItemObject = newObject.GetComponent<FallingItemObject>();
+
+                SetFallingItemObjectAttributes(currentFallingItemObject, currentFallingItem);
+
+                fallingItemObjects.Add(newObject);
+            }
+        }
+    }
+
+    private void InstantiatePickableFallingItems()
+    {
+        for (int i = 0; i < pickableFallingItems.Length; i++)
+        {
+            PickableFallingItem currentpickableFallingItem = pickableFallingItems[i];
+
+            for (int j = 0; j < numberOfRepeatedItems; j++)
+            {
+                GameObject newObject = InstantiateObject(pickableFallingItemObjectPrefab);
+                PickableFallingItemObject currentPickableFallingItemObject = newObject.GetComponent<PickableFallingItemObject>();
+
+                SetPickableFallingItemObjectAttributes(currentPickableFallingItemObject, currentpickableFallingItem);
+
+                fallingItemObjects.Add(newObject);
             }
         }
     }
@@ -79,12 +87,33 @@ public class FallingItemSpawner : MonoBehaviour
 
     private void SetPickableFallingItemObjectAttributes(PickableFallingItemObject pickableFallingItemObject, PickableFallingItem pickableFallingItem)
     {
+        SetFallingItemObjectAttributes(pickableFallingItemObject, pickableFallingItem);
         pickableFallingItemObject.mass = pickableFallingItem.pickupWeight;
     }
 
-    private void InstantiateObject(GameObject prefab)
+    private GameObject InstantiateObject(GameObject prefab)
     {
-        GameObject currentObject = Instantiate(prefab);
-        currentObject.SetActive(false);
+        GameObject newObject = Instantiate(prefab);
+        return newObject;
+    }
+
+    private void RunSpawnDelayTimer()
+    {
+        spawnDelayTimer.Duration = spawnDelaySeconds;
+        spawnDelayTimer.Run();
+    }
+    
+    private void SpawnObjects()
+    {
+        foreach (GameObject gameObject in fallingItemObjects)
+        {
+            if (gameObject.GetComponent<FallingItemObject>().CanBeSpawned)
+            {
+                gameObject.SetActive(true);
+                gameObject.transform.position = new Vector3(0, 7, 0);
+            }
+        }
+
+        RunSpawnDelayTimer();
     }
 }

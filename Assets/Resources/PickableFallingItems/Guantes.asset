@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97aa028e54457764e8cf5f218570bbc8, type: 3}
   m_Name: Guantes
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 56e7cedf6b8543c41b0230097052d279, type: 3}
+  sprite: {fileID: 21300000, guid: 86df581d88b1d7f4d86ca898c38c79e2, type: 3}
   fallingSpeed: 1
   spawnWaitSeconds: 1
   amountToCollect: 1
