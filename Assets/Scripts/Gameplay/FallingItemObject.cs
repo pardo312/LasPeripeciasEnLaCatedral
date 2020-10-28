@@ -10,9 +10,10 @@ public class FallingItemObject : MonoBehaviour
 
     public float spawnWaitSeconds;
     private Timer spawnDelayTimer;
-    private bool canBeSpawned;
+    protected bool canBeSpawned;
 
     protected Rigidbody2D rb;
+    protected CircleCollider2D circleCollider;
 
     public bool CanBeSpawned
     {
@@ -21,6 +22,9 @@ public class FallingItemObject : MonoBehaviour
 
     protected virtual void Start()
     {
+        circleCollider = GetComponent<CircleCollider2D>();
+        circleCollider.isTrigger = true;
+
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         spawnDelayTimer = gameObject.AddComponent<Timer>();
@@ -32,15 +36,28 @@ public class FallingItemObject : MonoBehaviour
 
     private void HandleSpawnDelayTimerFinished()
     {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
         canBeSpawned = true;
         GetComponent<SpriteRenderer>().sprite = sprite;
         rb.gravityScale = gravityScale;
+        circleCollider.isTrigger = false;
+        gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Floor"))
         {
+            gameObject.SetActive(false);
+        }
+
+        if (gameObject.tag == "FallingItem" && collision.gameObject.tag.Equals("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage();
             gameObject.SetActive(false);
         }
     }

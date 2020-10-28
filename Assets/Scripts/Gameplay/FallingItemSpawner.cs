@@ -11,12 +11,22 @@ public class FallingItemSpawner : MonoBehaviour
     private List<GameObject> fallingItemObjects;
 
     private FallingItem[] fallingItems;
-    private PickableFallingItem[] pickableFallingItems;
-    
-    private int numberOfRepeatedItems = 2;
+    private static PickableFallingItem[] pickableFallingItems;
+
+    public static PickableFallingItem[] PickableFallingItems
+    {
+        get { return pickableFallingItems; }
+    }
+
+    private int numberOfRepeatedItems = 8;
 
     private Timer spawnDelayTimer;
     int spawnDelaySeconds = 5;
+
+    [SerializeField]
+    Transform spawnPositionMin;
+    [SerializeField]
+    Transform spawnPositionMax;
 
     private void Awake()
     {
@@ -64,7 +74,7 @@ public class FallingItemSpawner : MonoBehaviour
         {
             PickableFallingItem currentpickableFallingItem = pickableFallingItems[i];
 
-            for (int j = 0; j < numberOfRepeatedItems; j++)
+            for (int j = 0; j < currentpickableFallingItem.amountToCollect; j++)
             {
                 GameObject newObject = InstantiateObject(pickableFallingItemObjectPrefab);
                 PickableFallingItemObject currentPickableFallingItemObject = newObject.GetComponent<PickableFallingItemObject>();
@@ -93,7 +103,7 @@ public class FallingItemSpawner : MonoBehaviour
 
     private GameObject InstantiateObject(GameObject prefab)
     {
-        GameObject newObject = Instantiate(prefab);
+        GameObject newObject = Instantiate(prefab, spawnPositionMin.position, Quaternion.identity);
         return newObject;
     }
 
@@ -105,12 +115,17 @@ public class FallingItemSpawner : MonoBehaviour
     
     private void SpawnObjects()
     {
-        foreach (GameObject gameObject in fallingItemObjects)
+        int randonNumberObjects2Spawn = Random.Range(1, fallingItemObjects.Count);
+
+        for(int i = 0; i < randonNumberObjects2Spawn; i++)
         {
-            if (gameObject.GetComponent<FallingItemObject>().CanBeSpawned)
+            int randonNumberObjectIndex = Random.Range(0, fallingItemObjects.Count);
+            GameObject object2Spawn = fallingItemObjects[randonNumberObjectIndex];
+            if (object2Spawn.GetComponent<FallingItemObject>().CanBeSpawned)
             {
-                gameObject.SetActive(true);
-                gameObject.transform.position = new Vector3(0, 7, 0);
+                object2Spawn.SetActive(true);
+                float x = Random.Range(spawnPositionMin.position.x, spawnPositionMax.position.x);
+                object2Spawn.transform.position = new Vector3(x, spawnPositionMin.position.y, spawnPositionMin.position.z);
             }
         }
 

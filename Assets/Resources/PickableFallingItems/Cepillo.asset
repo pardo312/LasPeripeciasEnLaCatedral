@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cepillo
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: bf130af98fd821a4387a12b69f409388, type: 3}
-  fallingSpeed: 1
+  fallingSpeed: 0.5
   spawnWaitSeconds: 1
   amountToCollect: 5
-  pickupWeight: 1
+  pickupWeight: 5

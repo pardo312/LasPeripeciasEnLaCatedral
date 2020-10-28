@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cincel
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: de177ac9f4b50944783a748b34dea5c9, type: 3}
-  fallingSpeed: 1
-  spawnWaitSeconds: 1
+  fallingSpeed: 0.5
+  spawnWaitSeconds: 4
   amountToCollect: 1
   pickupWeight: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Isopo
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 457c403cd58619e48b30f03b410f8a56, type: 3}
-  fallingSpeed: 1
-  spawnWaitSeconds: 1
+  fallingSpeed: 0.5
+  spawnWaitSeconds: 15
   amountToCollect: 1
   pickupWeight: 1
