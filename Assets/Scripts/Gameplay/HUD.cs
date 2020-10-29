@@ -95,20 +95,13 @@ public class HUD: MonoBehaviour
 		}
 	}
 
-
-    private void OnTriggerEnter2D(Collider2D collider){
-		  //collider.gameObject.tag == "piedra" //si tiene tag
-		if (collider.gameObject.name == "piedra") 
-        {
-			for(int i=1;i<4;i++){
-				corazon = GameObject.Find("corazon_" + i);
-				if(corazon!=null){
-					Debug.Log(corazon.name);
-					corazon.SetActive(false);
-					break;
-				}
-					
+    private void InactiveHeart(){ //metodo para desaparecer los corazones
+		for(int i=3;i>0;i--){
+			corazon = GameObject.Find("corazon_" + i);
+			if(corazon!=null){
+				corazon.SetActive(false);
+				break;
 			}
-		}
+		}		
 	}
 }
