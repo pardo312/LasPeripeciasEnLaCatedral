@@ -13,6 +13,7 @@ TagManager:
   - Pincel
   - Floor
   - FallingItem
+  - Escalera
   layers:
   - Default
   - TransparentFX
