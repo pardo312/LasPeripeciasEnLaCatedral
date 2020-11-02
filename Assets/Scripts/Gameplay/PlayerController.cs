@@ -5,56 +5,77 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 1f;
-    private SpriteRenderer spriteRender;
-    private static Rigidbody2D rigid;
-    private bool mirada = false;
+    [SerializeField]
+    private float speed;
+    private bool lookingLeft = false;
+    protected Vector2 velocity = Vector2.zero;
+    
+    protected SpriteRenderer spriteRender;
+    protected static Rigidbody2D rigidBody;
+    protected Animator animator;
 
-    bool canReceiveDamage = true;
-
+    private enum AnimatorStates
+    {
+        Walking
+    }
+    
     [SerializeField]
     HUD hud;
-
+    private bool canReceiveDamage = true;
     private int lifes = 3;
 
     public static Rigidbody2D PlayerRigidBody
     {
-        get { return rigid; }
+        get { return rigidBody; }
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         spriteRender = GetComponent<SpriteRenderer>();
-        rigid = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        CheckInput();
     }
 
     void FixedUpdate()
     {
-        rigid.velocity = Vector2.zero;
         Move();
+        Flip();
     }
+    protected virtual void CheckInput()
+    {
+        velocity = Vector3.zero;
+        velocity.x = Input.GetAxisRaw(AxisName.Horizontal.ToString()) * speed;
+        animator.SetBool(AnimatorStates.Walking.ToString(), Input.GetButton(AxisName.Horizontal.ToString()));
+    }
+
 
     private void Move()
     {
-        float inputX = Input.GetAxis("Horizontal");
-        rigid.AddForce(new Vector2(inputX * speed, 0), ForceMode2D.Impulse); //agregando velocidad
-
-        if (inputX > 0)
-        {
-            mirada = false;
-        }
-        if (inputX < 0)
-        {
-            mirada = true;
-        }
-        Flip();//para que el personaje gire a la direccion en que se mueve
+        rigidBody.velocity = Vector2.zero;
+        rigidBody.AddForce(velocity, ForceMode2D.Impulse);
     }
 	
-	private void Flip(){
-		if ((!mirada ? spriteRender.flipX : !spriteRender.flipX))
+	private void Flip()
+    {
+
+        if (velocity.x < 0)
+        {
+            lookingLeft = true;
+        }
+        if (velocity.x > 0)
+        {
+            lookingLeft = false;
+        }
+
+        if (!lookingLeft ? spriteRender.flipX : !spriteRender.flipX)
         { 
-            spriteRender.flipX = mirada;
+            spriteRender.flipX = lookingLeft;
         }
 	}
 
