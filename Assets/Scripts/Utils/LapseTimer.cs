@@ -39,9 +39,7 @@ public class LapseTimer : MonoBehaviour
 			
 			if ((int)(elapsedSeconds / Lapse) > currentLapseCount)
 			{
-				Debug.Log($"{elapsedSeconds}, {Lapse}, {(int)(elapsedSeconds / Lapse)}, {currentLapseCount}");
 				currentLapseCount = (int)(elapsedSeconds / Lapse);
-				Debug.Log("llegie");
 				lapsePassedEvent.Invoke();
 			}
 		}

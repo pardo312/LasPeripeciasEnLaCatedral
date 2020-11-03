@@ -3,5 +3,6 @@
 /// </summary>
 public enum MenuName
 {
-    Main
+    Main,
+    Pause
 }

@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Listens for the onClick events for the pause menu buttons
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
+    /// <summary>
+    /// Pauses the game when added to the scene
+    /// </summary>
     private void Start()
     {
-        //Pause the game when added to the scene
         Time.timeScale = 0;
     }
 
@@ -20,9 +23,12 @@ public class PauseMenu : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Hanldes the onClick event from the quit button
+    /// </summary>
     public void HandleQuitButtonOnClickEvent()
     {
-        //unpause the game, destroy menu, and got to main menu
+        //unpause the game, destroy menu, and go to main menu
         Time.timeScale = 1;
         Destroy(gameObject);
         MenuManager.GoToMenu(MenuName.Main);

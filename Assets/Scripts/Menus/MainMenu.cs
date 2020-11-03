@@ -1,22 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    /// <summary>
+    /// Handles the onClcik event from the LVL1 button
+    /// </summary>
     public void HandleLvL1ButtonOnClickEvent()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneName.LvL1Alpha.ToString());
     }
 
+    /// <summary>
+    /// Handles the onClcik event from the LVL2 button
+    /// </summary>
     public void HandleLvL2ButtonOnClickEvent()
     {
-        SceneManager.LoadScene(2);
-    }
-
-    public void HandleQuitButtonOnClickEvent()
-    {
-        Application.Quit();
+        SceneManager.LoadScene(SceneName.LvL2Alpha.ToString());
     }
 }
