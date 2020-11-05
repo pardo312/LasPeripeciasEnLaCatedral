@@ -21,17 +21,7 @@ public class DropSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        bool drop = false;
-        if (eventData.pointerDrag != null)
-        {
-            Image imagen = eventData.pointerDrag.GetComponent<Image>();
-            //Debug.Log("Nombre" + imagen.name);
-            Image slot = eventData.pointerEnter.GetComponent<Image>();
-            //Debug.Log("NombreSlot:" + slot.name);
-            drop = removeLetters(imagen.name) == removeLetters(slot.name);
-        }
-
-        if (!item && drop)
+        if (!item)
         {
             item = DragHandler.itemDragging;
             item.transform.SetParent(transform);
@@ -39,8 +29,4 @@ public class DropSlot : MonoBehaviour, IDropHandler
         }
     }
 
-    private string removeLetters(string cadena)
-    {
-        return Regex.Replace(cadena, "[^0-9.]", "");
-    }
 }
