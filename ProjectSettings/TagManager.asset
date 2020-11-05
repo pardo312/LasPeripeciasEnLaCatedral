@@ -14,6 +14,7 @@ TagManager:
   - Floor
   - FallingItem
   - Stair
+  - DragParent
   layers:
   - Default
   - TransparentFX
