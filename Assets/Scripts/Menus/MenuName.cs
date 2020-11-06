@@ -4,5 +4,7 @@
 public enum MenuName
 {
     Main,
-    Pause
+    Pause,
+    Lvl3Won,
+    Lvl3Lost
 }

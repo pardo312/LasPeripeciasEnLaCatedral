@@ -20,7 +20,7 @@ public class FallingItemSpawner : MonoBehaviour
 
     private int numberOfRepeatedItems = 8;
 
-    private Timer spawnDelayTimer;
+    private CountdownTimer spawnDelayTimer;
     int spawnDelaySeconds = 5;
 
     [SerializeField]
@@ -35,7 +35,7 @@ public class FallingItemSpawner : MonoBehaviour
 
     private void Start()
     {
-        spawnDelayTimer = gameObject.AddComponent<Timer>();
+        spawnDelayTimer = gameObject.AddComponent<CountdownTimer>();
         spawnDelayTimer.AddTimerFinishedListener(SpawnObjects);
         RunSpawnDelayTimer();
     }

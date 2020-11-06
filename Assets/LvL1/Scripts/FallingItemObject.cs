@@ -9,7 +9,7 @@ public class FallingItemObject : MonoBehaviour
     public float gravityScale;
 
     public float spawnWaitSeconds;
-    private Timer spawnDelayTimer;
+    private CountdownTimer spawnDelayTimer;
     protected bool canBeSpawned;
 
     protected Rigidbody2D rb;
@@ -27,7 +27,7 @@ public class FallingItemObject : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
-        spawnDelayTimer = gameObject.AddComponent<Timer>();
+        spawnDelayTimer = gameObject.AddComponent<CountdownTimer>();
         spawnDelayTimer.Duration = spawnWaitSeconds;
         spawnDelayTimer.AddTimerFinishedListener(HandleSpawnDelayTimerFinished);
         spawnDelayTimer.Run();

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 /// <summary>
 /// A timer
 /// </summary>
-public class Timer : MonoBehaviour
+public class CountdownTimer : MonoBehaviour
 {
 	#region Fields
 	
@@ -40,6 +40,11 @@ public class Timer : MonoBehaviour
 				totalSeconds = value;
 			}
 		}
+
+        get
+        {
+			return totalSeconds;
+        }
 	}
 	
 	/// <summary>
