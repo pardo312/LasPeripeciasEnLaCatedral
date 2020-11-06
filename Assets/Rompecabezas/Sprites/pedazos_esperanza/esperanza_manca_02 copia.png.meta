@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3fd46ec30f642e4468047cf7a1aec1df
+guid: bd9fc0ad65959334da8a2eeba2be2ccc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 195
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
