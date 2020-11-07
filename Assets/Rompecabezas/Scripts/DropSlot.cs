@@ -28,5 +28,4 @@ public class DropSlot : MonoBehaviour, IDropHandler
             item.transform.position = transform.position;
         }
     }
-
 }
