@@ -1,10 +1,14 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SliderTimer : IntEventInvoker
 {
     private Slider slider;
     private CountdownTimer countdownTimer;
-
+    private float duration;
     private GameLostEvent gameLostEvent;
 
     private void Start()
@@ -17,10 +21,14 @@ public class SliderTimer : IntEventInvoker
         slider = GetComponent<Slider>();
 
         countdownTimer = gameObject.AddComponent<CountdownTimer>();
-        countdownTimer.Duration = 5f;
         countdownTimer.AddTimerFinishedListener(HandleTimerFinished);
+        countdownTimer.Duration = duration;
         countdownTimer.Run();
+    }
 
+    public void Initialize(float duration)
+    {
+        this.duration = duration;
     }
 
     private void Update()

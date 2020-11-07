@@ -47,7 +47,7 @@ public class LineDrawer : IntEventInvoker
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, new Vector3(point.x, point.y, 0f));
         if(lineRenderer.positionCount > drawingPoints.Count + 1)
         {
-            enabled = false;
+            gameWonEvent.Invoke(0);
         }
     }
 

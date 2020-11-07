@@ -9,9 +9,9 @@ public static class EventManager
 {
     #region Fields
 
-    private static Dictionary<EventName, List<IntEventInvoker>> invokers =
+    public static Dictionary<EventName, List<IntEventInvoker>> invokers =
         new Dictionary<EventName, List<IntEventInvoker>>();
-    private static Dictionary<EventName, List<UnityAction<int>>> listeners =
+    public static Dictionary<EventName, List<UnityAction<int>>> listeners =
         new Dictionary<EventName, List<UnityAction<int>>>();
 
     #endregion

@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DragHandler : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
@@ -20,15 +15,8 @@ public class DragHandler : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
         dragParent = GameObject.FindGameObjectWithTag("DragParent").transform;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
-        UnityEngine.Debug.Log("OnBeginDrag");
         itemDragging = gameObject;
 
         startPosition = transform.position;
@@ -39,14 +27,12 @@ public class DragHandler : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginD
 
     public void OnDrag(PointerEventData eventData)
     {
-        UnityEngine.Debug.Log("OnDrag");
         transform.position = Input.mousePosition;
         //throw new System.NotImplementedException();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        UnityEngine.Debug.Log("OnEndDrag");
         itemDragging = null;
 
         if(transform.parent == dragParent)
