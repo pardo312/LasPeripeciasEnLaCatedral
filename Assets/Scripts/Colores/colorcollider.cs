@@ -31,7 +31,7 @@ public class colorcollider : MonoBehaviour
 
         _color.name = colorname;
 
-        Debug.Log(_color.name);
+        //Debug.Log(_color.name);
     }
 
 }

@@ -35,6 +35,7 @@ public static class AudioManager
         {
             int enumClip = (int)Enum.Parse(typeof(AudioClipName), clip.name);
             audioClips.Add((AudioClipName)enumClip, clip);
+            Debug.Log(clip);
         }
     }
 

@@ -18,4 +18,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneName.LvL2Alpha.ToString());
     }
+
+    public void HandleLvL3ButtonOnClickEvent()
+    {
+        SceneManager.LoadScene(SceneName.Lvl3InitScene.ToString());
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LineDrawer : IntEventInvoker
@@ -11,7 +12,9 @@ public class LineDrawer : IntEventInvoker
 
     private GameWonEvent gameWonEvent;
 
-    void Start()
+    private bool stop = false;
+
+    private void Start()
     {
         GetDrawingPoints();
         InitializeLineRenderer();
@@ -27,8 +30,11 @@ public class LineDrawer : IntEventInvoker
 
     void Update()
     {
-        DrawCurrentMousePosition();
-        MouseObjectHit();
+        if (!stop)
+        {
+            DrawCurrentMousePosition();
+            MouseObjectHit();
+        }
     }
 
     private void GetDrawingPoints()
@@ -47,7 +53,10 @@ public class LineDrawer : IntEventInvoker
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, new Vector3(point.x, point.y, 0f));
         if(lineRenderer.positionCount > drawingPoints.Count + 1)
         {
+            lineRenderer.startColor = Color.green;
+            lineRenderer.endColor = Color.green;
             gameWonEvent.Invoke(0);
+            enabled = false;
         }
     }
 
@@ -90,9 +99,30 @@ public class LineDrawer : IntEventInvoker
             if (drawingPoints.Contains(collidedObject))
             {
                 Vector3 collidedObjectPosition = collidedObject.transform.position;
-                SetLineRendererPoint(collidedObjectPosition);
-                AddLineRendererPoint();
+
+                if ((lineRenderer.positionCount - 1 == drawingPoints.Count && collidedObject == drawingPoints[0]) ||
+                    (drawingPoints[lineRenderer.positionCount - 1] == collidedObject))
+                {
+                    SetLineRendererPoint(collidedObjectPosition);
+                    AddLineRendererPoint();
+                    AudioManager.Play(AudioClipName.GoodInput);
+                }
+                else
+                {
+                    SetLineRendererPoint(collidedObjectPosition);
+                    StartCoroutine(Fail());
+                    AudioManager.Play(AudioClipName.BadInput);
+                }
             }
         }
+    }
+
+    private IEnumerator Fail()
+    {
+        stop = true;
+        lineRenderer.endColor = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        lineRenderer.endColor = Color.white;
+        stop = false;
     }
 }

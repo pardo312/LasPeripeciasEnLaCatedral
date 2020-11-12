@@ -9,6 +9,12 @@ using System.Text.RegularExpressions;
 public class DropSlot : MonoBehaviour, IDropHandler
 {
     public GameObject item;
+    DragAndDropManager dragAndDropManager;
+
+    private void Start()
+    {
+        dragAndDropManager = GameObject.FindGameObjectWithTag("DragAndDropManager").GetComponent<DragAndDropManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +32,12 @@ public class DropSlot : MonoBehaviour, IDropHandler
             item = DragHandler.itemDragging;
             item.transform.SetParent(transform);
             item.transform.position = transform.position;
+
+            if(item.tag == gameObject.tag)
+            {
+                item.GetComponent<DragHandler>().enabled = false;
+                dragAndDropManager.AddFinishedItem();
+            }
         }
     }
 }

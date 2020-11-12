@@ -3,4 +3,8 @@
 /// </summary>
 public enum AudioClipName
 {
+    GameLost,
+    GameWon,
+    BadInput,
+    GoodInput
 }

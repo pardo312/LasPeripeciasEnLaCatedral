@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Reconstruction
   m_EditorClassIdentifier: 
   sceneName: Reconstruction
-  InitialDuration: 2
+  InitialDuration: 15
+  points: 300

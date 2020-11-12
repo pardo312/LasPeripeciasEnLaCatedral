@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,22 +34,33 @@ public class Lvl3GameManager : MonoBehaviour
         LoadNextMiniGameScene();
     }
 
-    private void InstantiateGameOverMenu()
+    private void InstantiateGameOverMenu(bool won)
     {
         GameObject gameOverMenu = Instantiate(GameOverMenu);
-        gameOverMenu.GetComponent<Lvl3GameOverMenu>().Initialize(lifes, score, LoadNextMiniGame, Initialize);
+        gameOverMenu.GetComponent<Lvl3GameOverMenu>().Initialize(lifes, score, won, LoadNextMiniGame, Initialize);
     }
 
-    private void HandleGameWonEvent(int minigameScore)
+    private void HandleGameWonEvent(int unused)
     {
-        score += minigameScore;
-        InstantiateGameOverMenu();
+        Destroy(instantiatedSlider);
+        score += miniGames[currentMiniGameIndex].points;
+
+        StartCoroutine(Wait());
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+        InstantiateGameOverMenu(true);
+        AudioManager.Play(AudioClipName.GameWon);
     }
 
     private void HandleGameLostEvent(int unused)
     {
+        Destroy(instantiatedSlider);
         lifes -= 1;
-        InstantiateGameOverMenu();
+        InstantiateGameOverMenu(false);
+        AudioManager.Play(AudioClipName.GameLost);
     }
 
     private void LoadNextMiniGame()

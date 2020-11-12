@@ -14,6 +14,14 @@ TagManager:
   - Floor
   - FallingItem
   - color
+  - DragParent
+  - Puzzle1
+  - Puzzle2
+  - Puzzle3
+  - Puzzle4
+  - Puzzle5
+  - Puzzle6
+  - DragAndDropManager
   layers:
   - Default
   - TransparentFX

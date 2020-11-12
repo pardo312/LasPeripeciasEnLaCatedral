@@ -5,4 +5,5 @@ public class MiniGame : ScriptableObject
 {
     public string sceneName;
     public float InitialDuration;
+    public int points;
 }

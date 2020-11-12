@@ -5,5 +5,6 @@ public enum SceneName
 {
     MainMenu,
     LvL1Alpha,
-    LvL2Alpha
+    LvL2Alpha,
+    Lvl3InitScene
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class colormanager : MonoBehaviour
+public class colormanager : IntEventInvoker
 {
     private int SelectedcolorIndex;
     public GameObject color1;
@@ -14,14 +14,16 @@ public class colormanager : MonoBehaviour
     [Header("List of second colors")]
     [SerializeField] private List<color_tobe> color_color = new List<color_tobe>();
     public Image colorimaTobe;
-   
-  
+
+    private GameWonEvent gameWonEvent;
 
     // Start is called before the first frame update
     void Start()
     {
-      
 
+        gameWonEvent = new GameWonEvent();
+        unityEvents.Add(EventName.gameWonEvent, gameWonEvent);
+        EventManager.AddInvoker(EventName.gameWonEvent, this);
         ramdonColorToBe();
     }
 
@@ -60,7 +62,7 @@ public class colormanager : MonoBehaviour
 
         if (color_color[SelectedcolorIndex].colorName == colortocompare )
         {
-
+            gameWonEvent.Invoke(0);
             Debug.Log("exacto");
 
            
