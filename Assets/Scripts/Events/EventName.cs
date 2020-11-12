@@ -3,6 +3,7 @@
 /// </summary>
 public enum EventName
 {
-    gameWonEvent,
-    gameLostEvent
+    GameWonEvent,
+    GameLostEvent,
+    DamageReceivedEvent
 }

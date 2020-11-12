@@ -24,8 +24,8 @@ public class LineDrawer : IntEventInvoker
     private void InitializeGameWonEvent()
     {
         gameWonEvent = new GameWonEvent();
-        unityEvents.Add(EventName.gameWonEvent, gameWonEvent);
-        EventManager.AddInvoker(EventName.gameWonEvent, this);
+        unityEvents.Add(EventName.GameWonEvent, gameWonEvent);
+        EventManager.AddInvoker(EventName.GameWonEvent, this);
     }
 
     void Update()

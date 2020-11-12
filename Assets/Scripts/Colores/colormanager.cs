@@ -22,8 +22,8 @@ public class colormanager : IntEventInvoker
     {
 
         gameWonEvent = new GameWonEvent();
-        unityEvents.Add(EventName.gameWonEvent, gameWonEvent);
-        EventManager.AddInvoker(EventName.gameWonEvent, this);
+        unityEvents.Add(EventName.GameWonEvent, gameWonEvent);
+        EventManager.AddInvoker(EventName.GameWonEvent, this);
         ramdonColorToBe();
     }
 
