@@ -63,14 +63,14 @@ public class colormanager : IntEventInvoker
         if (color_color[SelectedcolorIndex].colorName == colortocompare )
         {
             gameWonEvent.Invoke(0);
-            Debug.Log("exacto");
+            //Debug.Log("exacto");
 
            
         }
         if(color_color[SelectedcolorIndex].colorName != colortocompare)
         {
 
-            Debug.Log("error");
+            //Debug.Log("error");
 
 
         }
@@ -81,7 +81,7 @@ public class colormanager : IntEventInvoker
         SelectedcolorIndex = Random.Range(0, color_color.Count);
         colorimaTobe.sprite = color_color[SelectedcolorIndex].image;
 
-        Debug.Log("color" + color_color[ SelectedcolorIndex].colorName);
+        //Debug.Log("color" + color_color[ SelectedcolorIndex].colorName);
 
     }
 
