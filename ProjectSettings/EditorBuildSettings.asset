@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LvL3/RestauracionCromatica/LvL4Colores.unity
     guid: 8366f0350145b7f479a0ad49197869ec
+  - enabled: 1
+    path: Assets/LvL3/Limpieza/Limpieza.unity
+    guid: c137967fe7fae604d98b44291ee11da0
   m_configObjects: {}

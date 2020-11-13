@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288794d2c45d6e340b6d675029da2752, type: 3}
   m_Name: Limpieza
   m_EditorClassIdentifier: 
-  sceneName: Puzzle
+  sceneName: Limpieza
   InitialDuration: 15
   points: 500

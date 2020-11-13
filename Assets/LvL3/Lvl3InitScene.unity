@@ -217,6 +217,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniGames:
   - {fileID: 11400000, guid: 9ce22429ff66f1042bc5eeb833487742, type: 2}
+  - {fileID: 11400000, guid: a17a92807acb52d4fad637cd2ecd8f0d, type: 2}
+  - {fileID: 11400000, guid: 6ef0e998f9d7d17409ca8b25b6da136c, type: 2}
+  - {fileID: 11400000, guid: c4966ae5b7d9b9a4da55774b2eb53699, type: 2}
   slider: {fileID: 6070692908005828001, guid: 04abcd3bfeb6f404cb3ad4dfdfdbd4f5, type: 3}
   GameOverMenu: {fileID: 8433206184430672655, guid: a946b7f032779134ab4d2f022f781ba4,
     type: 3}

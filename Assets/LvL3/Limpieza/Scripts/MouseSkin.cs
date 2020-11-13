@@ -9,9 +9,7 @@ public class MouseSkin : MonoBehaviour
  
     // Use this for initialization
     void Start () {
-        SceneManager.sceneUnloaded += onSceneExit;
         myCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        Cursor.visible=false;
     }
    
     // Update is called once per frame
@@ -19,8 +17,4 @@ public class MouseSkin : MonoBehaviour
         CanvasScaler scaler = GetComponentInParent<CanvasScaler>();
         GetComponent<RectTransform>().anchoredPosition = new Vector2((Input.mousePosition.x * scaler.referenceResolution.x / Screen.width)-960, (Input.mousePosition.y * scaler.referenceResolution.y / Screen.height)-550);
     }
-     void onSceneExit<Scene> (Scene scene) {  
-        Cursor.visible=true;
-        print ("The scene was unloaded!");
-     }
 }
