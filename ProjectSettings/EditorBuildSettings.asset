@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/LvL3/Reconstruction/Reconstruction.unity
     guid: b2f9bb82f0f649b4a8f69f26eab9aad6
   - enabled: 1
-    path: Assets/Scenes/LvL4Colores.unity
+    path: Assets/LvL3/RestauracionCromatica/LvL4Colores.unity
     guid: 8366f0350145b7f479a0ad49197869ec
   m_configObjects: {}
