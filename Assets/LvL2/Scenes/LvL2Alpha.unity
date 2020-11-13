@@ -4045,7 +4045,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  hud: {fileID: 0}
   climbSpeed: 2.5
 --- !u!212 &896864401
 SpriteRenderer:
@@ -6007,12 +6006,15 @@ MonoBehaviour:
   leftSections:
   - {fileID: 8369330978775965183, guid: cf31c3b27c35e214aa59b9bca15aec59, type: 3}
   - {fileID: 5725028163624953588, guid: d9e17e714d6f9554588ffc07895fede5, type: 3}
+  - {fileID: 5725028163624953588, guid: 79a5392bcbb61a343bc8212054ba7f79, type: 3}
   noWallSections:
   - {fileID: 4946320032826884983, guid: ba48417b23d28824fa099a5a2c7ac64b, type: 3}
   - {fileID: 4946320032826884983, guid: 588ae7cdd51521e42b986948b819b9e0, type: 3}
+  - {fileID: 4946320032826884983, guid: c03e51f471e369043989d56a13ad21bc, type: 3}
   rightSections:
   - {fileID: 6629597011652162079, guid: 071367c0b9b3aa649a3edfa883d0f854, type: 3}
   - {fileID: 6629597011652162079, guid: 8c55980309fe35241a1e0446a4fe453f, type: 3}
+  - {fileID: 6629597011652162079, guid: 4b3d5c065859a9443b4817fb4a5128f6, type: 3}
 --- !u!1 &1313531209
 GameObject:
   m_ObjectHideFlags: 0

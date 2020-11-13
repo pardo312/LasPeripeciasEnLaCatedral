@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SectionsInit : MonoBehaviour
 {
-    private int arraysSize = 2;
+    private int arraysSize = 3;
     [SerializeField] private GameObject[] leftSections;
     [SerializeField] private GameObject[] noWallSections;
     [SerializeField] private GameObject[] rightSections;
@@ -39,10 +39,7 @@ public class SectionsInit : MonoBehaviour
                         alredyHasTop=true;
                 }
             } 
-            int typeOfSection = 2;
-            if(pathToExit[i])
-                typeOfSection = Random.Range(1,4);
-            switch (typeOfSection)
+            switch (Random.Range(1,4))
             {
                 case 1:
                     currentSectionList = leftSections;
