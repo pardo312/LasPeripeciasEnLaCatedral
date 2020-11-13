@@ -1,57 +1,79 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Palomino : MonoBehaviour
 {
-    public float speed = 5.0f;
-    private const string AXIS_H = "Horizontal", AXIS_V = "Vertical";
-    private bool walking = false;
-  
-    private Animator _animator;
-    private Rigidbody2D _Playerrigibody;
-    // Start is called before the first frame update
+    [SerializeField] private GameObject palomino;
+    private bool inAnimation1;
+    private bool inAnimation2;
+
+    [SerializeField] private float spawnSecondsMin;
+    [SerializeField] private float spawnSecondsMax;
+
+    [SerializeField] private float durationMin;
+    [SerializeField] private float durationMax;
+
+    private CountdownTimer spawnTimer;
+    private CountdownTimer durationTimer;
+
+
     void Start()
     {
-        _animator = GetComponent<Animator>();
-        _Playerrigibody = GetComponent<Rigidbody2D>();
+        palomino.SetActive(false);
+
+        spawnTimer = gameObject.AddComponent<CountdownTimer>();
+        spawnTimer.AddTimerFinishedListener(HandleSpawnTimerFinished);
+        durationTimer = gameObject.AddComponent<CountdownTimer>();
+        durationTimer.AddTimerFinishedListener(HandleDurationTimerFinished);
+        RunSpawnTimer();
+    }
+
+    private void RunSpawnTimer()
+    {
+        spawnTimer.Duration = Random.Range(spawnSecondsMin, spawnSecondsMax);
+        spawnTimer.Run();
+    }
+
+    private void HandleSpawnTimerFinished()
+    {
+        palomino.SetActive(true);
+        inAnimation1 = true;
+    }
+
+    private void RunDurationTimer()
+    {
+        durationTimer.Duration = Random.Range(durationMin, durationMax);
+        durationTimer.Run();
+    }
+
+    private void HandleDurationTimerFinished()
+    {
+        inAnimation2 = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        walking = false;
-        if (Mathf.Abs(Input.GetAxisRaw(AXIS_H)) > 0.2f)
+        if (inAnimation1)
         {
+            palomino.transform.position = Vector3.Lerp(palomino.transform.position, Vector3.zero, Time.deltaTime);
 
-            //Vector3 translation = new Vector3(Input.GetAxisRaw(AXIS_H) * speed *Time.deltaTime,0,0);
-            // this.transform.Translate(translation);
-
-            _Playerrigibody.velocity = new Vector2(Input.GetAxisRaw(AXIS_H) * this.speed, _Playerrigibody.velocity.y);
-            walking = true;
-           
+            if (palomino.transform.position.magnitude <= 0.01f)
+            {
+                inAnimation1 = false;
+                RunDurationTimer();
+            }
         }
-        if (Mathf.Abs(Input.GetAxisRaw(AXIS_V)) > 0.2f)
+
+        if (inAnimation2)
         {
+            palomino.transform.position = Vector3.Lerp(palomino.transform.position, new Vector3(0, 10, 0), Time.deltaTime);
 
-            //Vector3 translation = new Vector3(0,Input.GetAxisRaw(AXIS_V) * speed * Time.deltaTime, 0);  
-            //this.transform.Translate(translation);
-            _Playerrigibody.velocity = new Vector2(_Playerrigibody.velocity.x, Input.GetAxisRaw(AXIS_V) * this.speed);
-            walking = true;
-       
+            if (palomino.transform.position.y >= 9.9f)
+            {
+                inAnimation2 = false;
+                palomino.SetActive(false);
+                RunSpawnTimer();
+            }
         }
-    }
-
-    private void LateUpdate()
-    {
-        if (!walking)
-        {
-            _Playerrigibody.velocity = Vector2.zero;
-
-        }
-        _animator.SetFloat("Horizontal", Input.GetAxisRaw(AXIS_H));
-        _animator.SetFloat("Vertical", Input.GetAxisRaw(AXIS_V));
-        _animator.SetBool("Walking", walking);
-        
     }
 }

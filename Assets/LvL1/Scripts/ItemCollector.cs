@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    private BoxCollider2D boxCollider;
+    [SerializeField] private Lvl1HUD hud;
+
     float colliderHalfWidth;
     float colliderHalfHeight;
-    [SerializeField]
-    private HUD hud;
+
+    private BoxCollider2D boxCollider;
 
     private void Start()
     {
@@ -31,8 +30,8 @@ public class ItemCollector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject collisionObject = collision.gameObject;
-        PickableFallingItemObject objectScript = collisionObject.GetComponent<PickableFallingItemObject>();
-        if (LayerMask.LayerToName(collisionObject.layer).Equals("PickableItem") && objectScript.AttachedToPlayer)
+        PickableFallingItem objectScript = collisionObject.GetComponent<PickableFallingItem>();
+        if (objectScript != null && objectScript.AttachedToPlayer)
         {
             hud.CollectItem(collisionObject.name);
             objectScript.AttachToCollector(gameObject, GetRandomColliderPosition());

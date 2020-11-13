@@ -13,8 +13,8 @@ public class DragAndDropManager : IntEventInvoker
 
     private void Start()
     {
-        unityEvents.Add(EventName.gameWonEvent, gameWonEvent);
-        EventManager.AddInvoker(EventName.gameWonEvent, this);
+        unityEvents.Add(EventName.GameWonEvent, gameWonEvent);
+        EventManager.AddInvoker(EventName.GameWonEvent, this);
 
         initPositions = initPositions.OrderBy(a => Guid.NewGuid()).ToList();
         for(int i = 0; i < initPositions.Count; i++)

@@ -20,8 +20,8 @@ public class Lvl3GameManager : MonoBehaviour
     private void Start()
     {
         Initialize();
-        EventManager.AddListener(EventName.gameWonEvent, HandleGameWonEvent);
-        EventManager.AddListener(EventName.gameLostEvent, HandleGameLostEvent);
+        EventManager.AddListener(EventName.GameWonEvent, HandleGameWonEvent);
+        EventManager.AddListener(EventName.GameLostEvent, HandleGameLostEvent);
         DontDestroyOnLoad(this);
     }
 

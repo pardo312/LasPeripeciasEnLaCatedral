@@ -3,25 +3,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
+    [SerializeField] private float speed;
     private bool lookingLeft = false;
     protected Vector2 velocity = Vector2.zero;
-    
-    protected SpriteRenderer spriteRender;
-    protected static Rigidbody2D rigidBody;
-    
-    [SerializeField]
-    HUD hud;
-    private bool canReceiveDamage = true;
-    private int lifes = 3;
 
-    public static Rigidbody2D PlayerRigidBody
-    {
-        get { return rigidBody; }
-    }
+    protected Rigidbody2D rigidBody;
+    private SpriteRenderer spriteRender;
 
-    // Start is called before the first frame update
     protected virtual void Start()
     {
         spriteRender = GetComponent<SpriteRenderer>();
@@ -49,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = Vector2.zero;
         rigidBody.AddForce(velocity, ForceMode2D.Impulse);
+
     }
 	
 	private void Flip()
@@ -69,29 +58,13 @@ public class PlayerController : MonoBehaviour
         }
 	}
 
-    private IEnumerator DamageAnim()
+    public void AddMass(float mass)
     {
-        canReceiveDamage = false;
-        for(int i=0; i < 10; i++)
-        {
-            spriteRender.color = new Color(spriteRender.color.r, spriteRender.color.g, spriteRender.color.b, 0.8f);
-            yield return new WaitForSeconds(0.1f);
-            spriteRender.color = new Color(spriteRender.color.r, spriteRender.color.g, spriteRender.color.b, 1f);
-            yield return new WaitForSeconds(0.1f);
-        }
-        canReceiveDamage = true;
+        rigidBody.mass += mass;
     }
 
-    public void TakeDamage()
+    public void RemoveMass(float mass)
     {
-        if (canReceiveDamage)
-        {
-            lifes -= 1;
-            if (lifes == 0)
-            {
-                Destroy(gameObject);
-            }
-            StartCoroutine(DamageAnim());
-        }
+        rigidBody.mass -= mass;
     }
 }

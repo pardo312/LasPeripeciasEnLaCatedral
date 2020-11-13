@@ -15,8 +15,8 @@ public class SliderTimer : IntEventInvoker
     {
 
         gameLostEvent = new GameLostEvent();
-        unityEvents.Add(EventName.gameLostEvent, gameLostEvent);
-        EventManager.AddInvoker(EventName.gameLostEvent, this);
+        unityEvents.Add(EventName.GameLostEvent, gameLostEvent);
+        EventManager.AddInvoker(EventName.GameLostEvent, this);
 
         slider = GetComponent<Slider>();
 
