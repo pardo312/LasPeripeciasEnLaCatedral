@@ -7,6 +7,8 @@ public class DirtManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     [SerializeField]private GameObject dirtSprite;
     [SerializeField]private Image currentDirtSprite;
+    [SerializeField]private Vector3 mousePosTemp = Vector3.zero;
+    [SerializeField]private float lastMouseMoveTime = 0;
     public bool hasDirt;
     private float quantityOfDirt = 1;
     private bool pressed = false;
@@ -24,16 +26,21 @@ public class DirtManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     // Update is called once per frame
     void Update()
-    {
-        if(pressed)
-            if(Input.GetMouseButton(0))
-                if(hasDirt){
-                    quantityOfDirt-=0.001f;
+    {        
+        if(pressed && Input.GetMouseButton(0) && hasDirt && Input.mousePosition!=mousePosTemp)
+        {
+            if(lastMouseMoveTime>100){
+                lastMouseMoveTime = 0;
+                mousePosTemp=Input.mousePosition;
+            }
+            lastMouseMoveTime++;
+            quantityOfDirt-=0.001f;
 
-                    Color temp = currentDirtSprite.color;
-                    temp.a=quantityOfDirt;
-                    currentDirtSprite.color = temp;
-                }
+            Color temp = currentDirtSprite.color;
+            temp.a=quantityOfDirt;
+            currentDirtSprite.color = temp;
+        }
+                
         if(quantityOfDirt<=0)
         {
             Color temp = GetComponent<Image>().color;
