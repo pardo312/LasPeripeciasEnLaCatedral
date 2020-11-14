@@ -6,6 +6,7 @@ public class StairClimber : PlayerController
 	private float climbSpeed;
 
 	private bool isClimbing = false;
+	[HideInInspector]public bool canMove = true;
 	private float initialGravityScale;
 	private Animator animator;
 
@@ -18,13 +19,19 @@ public class StairClimber : PlayerController
 
     protected override void CheckInput()
     {
-        base.CheckInput();
-		if (isClimbing)
+		if(canMove)
 		{
-			velocity.y = Input.GetAxisRaw(AxisName.Vertical.ToString()) * climbSpeed;
-		}
+			base.CheckInput();
+			if (isClimbing)
+			{
+				velocity.y = Input.GetAxisRaw(AxisName.Vertical.ToString()) * climbSpeed;
+			}
 
-		animator.SetBool(Lvl2PlayerAnimStates.Walking.ToString(), Input.GetButton(AxisName.Horizontal.ToString()));
+			animator.SetBool(Lvl2PlayerAnimStates.Walking.ToString(), Input.GetButton(AxisName.Horizontal.ToString()));
+		}
+	}
+	public void stopMovement(){
+		velocity = Vector2.zero;
 	}
 
     private void OnTriggerStay2D(Collider2D collider2D)
