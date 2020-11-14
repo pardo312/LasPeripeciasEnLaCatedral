@@ -83,7 +83,7 @@ public class FallingItemSpawner : MonoBehaviour
                 object2Spawn.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
             }
         }
-
+        AudioManager.Play(AudioClipName.Lvl1FallingObjectsBM);
         RunSpawnDelayTimer();
     }
 

@@ -30,7 +30,7 @@ public static class AudioManager
     {
         initialized = true;
         audioSource = source;
-
+        audioClips.Clear();
         foreach (AudioClip clip in Resources.LoadAll<AudioClip>(SoundsFolder))
         {
             int enumClip = (int)Enum.Parse(typeof(AudioClipName), clip.name);

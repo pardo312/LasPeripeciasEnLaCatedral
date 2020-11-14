@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RestartScene : MonoBehaviour
@@ -14,6 +12,6 @@ public class RestartScene : MonoBehaviour
     public void nextScene()
     {
         Time.timeScale=1f;
-        SceneManager.LoadScene("Lvl3InitScene");
+        SceneManager.LoadScene(SceneName.Video2.ToString());
     }
 }

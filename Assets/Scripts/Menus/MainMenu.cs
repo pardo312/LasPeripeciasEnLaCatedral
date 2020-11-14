@@ -11,6 +11,31 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneName.LvL1Alpha.ToString());
     }
 
+    public void HandleVideo1ButtonOnClickEvent()
+    {
+        SceneManager.LoadScene(SceneName.Video1.ToString());
+    }
+
+    public void HandleVideo2ButtonOnClickEvent()
+    {
+        SceneManager.LoadScene(SceneName.Video2.ToString());
+    }
+    public void HandleVideo3ButtonOnClickEvent()
+    {
+        SceneManager.LoadScene(SceneName.Video3.ToString());
+    }
+
+    public void HandleMainMenuButtonOnClickEvent()
+    {
+        SceneManager.LoadScene(SceneName.MainMenu.ToString());
+    }
+
+    public void HandleCreditsButtonOnClickEvent()
+    {
+        SceneManager.LoadScene(SceneName.Credits.ToString());
+    }
+
+
     /// <summary>
     /// Handles the onClcik event from the LVL2 button
     /// </summary>

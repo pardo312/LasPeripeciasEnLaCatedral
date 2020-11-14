@@ -47,6 +47,7 @@ public class FallingItem : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals(TagName.Floor.ToString()))
         {
+            AudioManager.Play(AudioClipName.Lvl1StoneCrash);
             gameObject.SetActive(false);
         }
     }

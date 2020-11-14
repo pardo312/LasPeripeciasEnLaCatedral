@@ -23,6 +23,8 @@ TagManager:
   - Puzzle6
   - DragAndDropManager
   - Stair
+  - AudioSource
+  - GameManager
   layers:
   - Default
   - TransparentFX

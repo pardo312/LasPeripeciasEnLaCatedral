@@ -14,13 +14,6 @@ public class GameAudioSource : MonoBehaviour
         {
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             AudioManager.Initialize(audioSource);
-            DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            //duplicate game object, do destroy
-            Destroy(gameObject);
-        }
-        
     }
 }

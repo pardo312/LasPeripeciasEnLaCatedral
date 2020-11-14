@@ -13,6 +13,7 @@ public class Lvl3GameOverMenu : MonoBehaviour
     [SerializeField] private Button homeButton;
     [SerializeField] private Button playButton;
     [SerializeField] private Button restartButton;
+    [SerializeField] private Button nextSceneButton;
 
     private int lifes;
     private int score;
@@ -60,11 +61,20 @@ public class Lvl3GameOverMenu : MonoBehaviour
         {
             scoreText.text = score.ToString();
             stateText.text = "Qué mal, vuelve a intentarlo!";
+            homeButton.gameObject.SetActive(false);
             restartButton.gameObject.SetActive(true);
+            nextSceneButton.gameObject.SetActive(true);
+            nextSceneButton.onClick.AddListener(HandleNextSceneButtonOnClickEvent);
             restartButton.onClick.AddListener(restartButtonOnClick);
         }
 
         homeButton.onClick.AddListener(HandleHomeButtonOnClickEvent);
+    }
+
+    private void HandleNextSceneButtonOnClickEvent()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("GameManager"));
+        SceneManager.LoadScene(SceneName.Video3.ToString());
     }
 
     private void HandleHomeButtonOnClickEvent()

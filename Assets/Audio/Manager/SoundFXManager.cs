@@ -14,7 +14,6 @@ public class SoundFXManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
