@@ -504,7 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtSprite: {fileID: 8805140121786078899, guid: f582e396e39dff142aed1de4d2334bc5,
     type: 3}
-  currentDirtSprite: {fileID: 0}
+  smoke: {fileID: 8805140121786078899, guid: acd2225888028d94ba70f4b2d7944763, type: 3}
   hasDirt: 0
 --- !u!114 &596641790
 MonoBehaviour:
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtSprite: {fileID: 8805140121786078899, guid: f582e396e39dff142aed1de4d2334bc5,
     type: 3}
-  currentDirtSprite: {fileID: 0}
+  smoke: {fileID: 8805140121786078899, guid: acd2225888028d94ba70f4b2d7944763, type: 3}
   hasDirt: 0
 --- !u!114 &844586921
 MonoBehaviour:
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtSprite: {fileID: 8805140121786078899, guid: f582e396e39dff142aed1de4d2334bc5,
     type: 3}
-  currentDirtSprite: {fileID: 0}
+  smoke: {fileID: 8805140121786078899, guid: acd2225888028d94ba70f4b2d7944763, type: 3}
   hasDirt: 0
 --- !u!114 &1351099859
 MonoBehaviour:
@@ -1426,7 +1426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtSprite: {fileID: 8805140121786078899, guid: f582e396e39dff142aed1de4d2334bc5,
     type: 3}
-  currentDirtSprite: {fileID: 0}
+  smoke: {fileID: 8805140121786078899, guid: acd2225888028d94ba70f4b2d7944763, type: 3}
   hasDirt: 0
 --- !u!114 &1875046901
 MonoBehaviour:
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtSprite: {fileID: 8805140121786078899, guid: f582e396e39dff142aed1de4d2334bc5,
     type: 3}
-  currentDirtSprite: {fileID: 0}
+  smoke: {fileID: 8805140121786078899, guid: acd2225888028d94ba70f4b2d7944763, type: 3}
   hasDirt: 0
 --- !u!114 &1884550549
 MonoBehaviour:
@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtSprite: {fileID: 8805140121786078899, guid: f582e396e39dff142aed1de4d2334bc5,
     type: 3}
-  currentDirtSprite: {fileID: 0}
+  smoke: {fileID: 8805140121786078899, guid: acd2225888028d94ba70f4b2d7944763, type: 3}
   hasDirt: 0
 --- !u!114 &1973588838
 MonoBehaviour:

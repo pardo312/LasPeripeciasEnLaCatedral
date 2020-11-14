@@ -34,24 +34,18 @@ public class BackgroundChanger : MonoBehaviour
             lapseTimer.elapsedSeconds=31f;
             background1.SetActive(false);
             background2.SetActive(true);
-            MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
-            musicManager.SpeedUpSong(0.3f);
             StartCoroutine(startCutsceneTrigger("Deterioro2")); 
         }
         else if((int)lapseTimer.elapsedSeconds==60){
             lapseTimer.elapsedSeconds=61f;
             background1.SetActive(true);
             background2.SetActive(false);
-            MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
-            musicManager.SpeedUpSong(0.3f);  
             StartCoroutine(startCutsceneTrigger("Deterioro3"));
         }
         else if((int)lapseTimer.elapsedSeconds==90){
             lapseTimer.elapsedSeconds=91f;
             background1.SetActive(false);
             background2.SetActive(true);
-            MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
-            musicManager.SpeedUpSong(0.3f);
             StartCoroutine(startCutsceneTrigger("Deterioro4"));
         }
         
@@ -66,29 +60,29 @@ public class BackgroundChanger : MonoBehaviour
     IEnumerator startCutsceneTrigger(string triggerToActivate){
         
         //Que asco de codigo ;_v no merezco ni progamar xd
-        Animator anim;
+        CircleCollider2D sculptureCollider;
         MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
-        musicManager.SpeedUpSong(0.3f);
+        musicManager.SpeedUpSong(0.2f);
         StairClimber playerMove = GameObject.Find("Restorer").GetComponent<StairClimber>();
         playerMove.stopMovement();
-        if(estatua2.TryGetComponent<Animator>(out anim) || estatua1.TryGetComponent<Animator>(out anim)){
+        if(estatua2.TryGetComponent<CircleCollider2D>(out sculptureCollider) || estatua1.TryGetComponent<CircleCollider2D>(out sculptureCollider)){
             SoundFXManager soundFXManager = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
             soundFXManager.StopPlayingAll();
             playerMove.canMove = false;
             lapseTimer.isRunning = false;
         }
-        if(estatua1.TryGetComponent<Animator>(out anim)){
-            cinemachine.Follow = estatua1.transform;
             estatua1.GetComponent<Animator>().SetTrigger(triggerToActivate);
+        if(estatua1.TryGetComponent<CircleCollider2D>(out sculptureCollider)){
+            cinemachine.Follow = estatua1.transform;
             yield return new WaitForSeconds(3);
         }
-        if(estatua2.TryGetComponent<Animator>(out anim)){
-            cinemachine.Follow = estatua2.transform;
             estatua2.GetComponent<Animator>().SetTrigger(triggerToActivate);
+        if(estatua2.TryGetComponent<CircleCollider2D>(out sculptureCollider)){
+            cinemachine.Follow = estatua2.transform;
             yield return new WaitForSeconds(3);
         }
 
-        if(estatua2.TryGetComponent<Animator>(out anim) || estatua1.TryGetComponent<Animator>(out anim)){
+        if(estatua2.TryGetComponent<CircleCollider2D>(out sculptureCollider) || estatua1.TryGetComponent<CircleCollider2D>(out sculptureCollider)){
             cinemachine.Follow = GameObject.Find("Restorer").transform;
             lapseTimer.isRunning = true;
             if(triggerToActivate.Equals("Deterioro4")){
