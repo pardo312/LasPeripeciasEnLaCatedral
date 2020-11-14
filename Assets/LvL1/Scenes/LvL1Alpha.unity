@@ -861,6 +861,10 @@ MonoBehaviour:
   - {fileID: 1054103492}
   - {fileID: 945417091}
   fallingItemSpawner: {fileID: 2138453303}
+  gameWonMenu: {fileID: 2712073216265688814, guid: ae6a0d7b1ed2b314d850e418a5a5f597,
+    type: 3}
+  gameLostMenu: {fileID: 2712073216265688814, guid: 8970974c1d86c13489c00c2f11463ca9,
+    type: 3}
 --- !u!1 &506178800
 GameObject:
   m_ObjectHideFlags: 0

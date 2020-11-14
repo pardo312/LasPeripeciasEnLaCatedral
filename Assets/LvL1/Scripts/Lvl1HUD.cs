@@ -1,15 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Lvl1HUD: MonoBehaviour
+public class Lvl1HUD: IntEventInvoker
 {
 	[SerializeField] private Text[] txtItems;
 	[SerializeField] private PickableFallingItem[] pickableFallingItems;
 	[SerializeField] private GameObject[] lifes;
 	[SerializeField] private FallingItemSpawner fallingItemSpawner;
 
-	private void Start()
+	[SerializeField] private GameObject gameWonMenu;
+	[SerializeField] private GameObject gameLostMenu;
+
+	private GameWonEvent gameWonEvent;
+
+    private void Awake()
+    {
+		gameWonEvent = new GameWonEvent();
+
+	}
+
+    private void Start()
 	{
+		unityEvents.Add(EventName.GameWonEvent, gameWonEvent);
+		EventManager.AddInvoker(EventName.GameWonEvent, this);
+
 		EventManager.AddListener(EventName.DamageReceivedEvent, InactiveHeart);
 		InitializeItems();
 	}
@@ -33,24 +47,41 @@ public class Lvl1HUD: MonoBehaviour
 
 	public void CollectItem(string itemName)
     {
+		int completedItems = 0;
+
 		for (int j = 0; j < txtItems.Length; j++)
 		{
 			Text currentItemText = txtItems[j];
+
+			string text = currentItemText.text;
+			int currentAmountCollected = (int)char.GetNumericValue(text[0]);
+			int amountToCollect = (int)char.GetNumericValue(text[text.Length - 1]);
+			
 			if (currentItemText.name == itemName)
 			{
-				string text = currentItemText.text;
-				int currentAmountCollected = (int)char.GetNumericValue(text[0]);
-				int amountToCollect = (int)char.GetNumericValue(text[text.Length - 1]);
-				if (currentAmountCollected < amountToCollect)
+				currentAmountCollected += 1;
+
+				if (currentAmountCollected <= amountToCollect)
                 {
-					currentItemText.text = $"{currentAmountCollected + 1}{text.Substring(1)}";
+					currentItemText.text = $"{currentAmountCollected}{text.Substring(1)}";
 				}
                 
-				if(currentAmountCollected + 1 == amountToCollect)
+				if(currentAmountCollected == amountToCollect)
                 {
 					fallingItemSpawner.RemoveItemFromPool(itemName);
 				}
 			}
+
+			if(currentAmountCollected == amountToCollect)
+            {
+				completedItems++;
+			}
+		}
+
+		if(completedItems == txtItems.Length)
+        {
+			gameWonEvent.Invoke(0);
+			Instantiate(gameWonMenu);
 		}
 	}
 
@@ -60,6 +91,12 @@ public class Lvl1HUD: MonoBehaviour
             if (lifes[i].activeSelf)
             {
 				lifes[i].SetActive(false);
+
+				if(i == 0)
+                {
+					Instantiate(gameLostMenu);
+                }
+
 				break;
 			}
 		}		

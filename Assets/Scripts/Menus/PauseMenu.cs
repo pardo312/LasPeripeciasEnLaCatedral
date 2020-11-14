@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Listens for the onClick events for the pause menu buttons
 /// </summary>
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] private SceneName currentScene;
+    [SerializeField] private SceneName nextScene;
+
     /// <summary>
     /// Pauses the game when added to the scene
     /// </summary>
@@ -21,6 +25,18 @@ public class PauseMenu : MonoBehaviour
         //unpause game and destroy menu
         Time.timeScale = 1;
         Destroy(gameObject);
+    }
+
+    public void HandleRestartButtonOnClickEvent()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(currentScene.ToString());
+    }
+
+    public void HandleContinueButtonOnClickEvent()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(nextScene.ToString());
     }
 
     /// <summary>

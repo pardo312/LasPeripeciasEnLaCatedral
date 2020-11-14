@@ -44,6 +44,7 @@ public class PlayerHealth : IntEventInvoker
             if (lifes <= 0)
             {
                 gameLostEvent.Invoke(0);
+                Destroy(gameObject);
                 return;
             }
             StartCoroutine(DamageAnim());
