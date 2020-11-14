@@ -28,6 +28,7 @@ public class PickableFallingItem : FallingItem
         Destroy(rb);
         canBeSpawned = false;
         col.isTrigger = true;
+        AudioManager.Play(AudioClipName.Lvl1PickupItem);
     }
 
     public void AttachToCollector(GameObject collector, Vector3 position)
@@ -36,6 +37,7 @@ public class PickableFallingItem : FallingItem
         transform.SetParent(collector.transform);
         transform.position = position;
         Destroy(col);
+        AudioManager.Play(AudioClipName.Lvl1LeaveItem);
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

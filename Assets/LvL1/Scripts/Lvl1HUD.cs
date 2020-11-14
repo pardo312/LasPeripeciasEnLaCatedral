@@ -80,6 +80,7 @@ public class Lvl1HUD: IntEventInvoker
 
 		if(completedItems == txtItems.Length)
         {
+			AudioManager.Play(AudioClipName.Lvl1GameWon);
 			gameWonEvent.Invoke(0);
 			Instantiate(gameWonMenu);
 		}
@@ -94,6 +95,7 @@ public class Lvl1HUD: IntEventInvoker
 
 				if(i == 0)
                 {
+					AudioManager.Play(AudioClipName.Lvl1GameLost);
 					Instantiate(gameLostMenu);
                 }
 

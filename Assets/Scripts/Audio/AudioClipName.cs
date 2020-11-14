@@ -3,8 +3,13 @@
 /// </summary>
 public enum AudioClipName
 {
-    GameLost,
-    GameWon,
-    BadInput,
-    GoodInput
+    Lvl1Damage,
+    Lvl1GameWon,
+    Lvl1GameLost,
+    Lvl1PickupItem,
+    Lvl1LeaveItem,
+    Lvl3GameLost,
+    Lvl3GameWon,
+    Lvl3BadInput,
+    Lvl3GoodInput
 }

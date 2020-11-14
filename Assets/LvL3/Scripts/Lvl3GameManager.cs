@@ -52,7 +52,7 @@ public class Lvl3GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         InstantiateGameOverMenu(true);
-        AudioManager.Play(AudioClipName.GameWon);
+        AudioManager.Play(AudioClipName.Lvl3GameWon);
     }
 
     private void HandleGameLostEvent(int unused)
@@ -60,7 +60,7 @@ public class Lvl3GameManager : MonoBehaviour
         Destroy(instantiatedSlider);
         lifes -= 1;
         InstantiateGameOverMenu(false);
-        AudioManager.Play(AudioClipName.GameLost);
+        AudioManager.Play(AudioClipName.Lvl3GameLost);
     }
 
     private void LoadNextMiniGame()

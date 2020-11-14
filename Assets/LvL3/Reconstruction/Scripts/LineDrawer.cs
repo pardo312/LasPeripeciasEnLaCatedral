@@ -105,13 +105,13 @@ public class LineDrawer : IntEventInvoker
                 {
                     SetLineRendererPoint(collidedObjectPosition);
                     AddLineRendererPoint();
-                    AudioManager.Play(AudioClipName.GoodInput);
+                    AudioManager.Play(AudioClipName.Lvl3GoodInput);
                 }
                 else
                 {
                     SetLineRendererPoint(collidedObjectPosition);
                     StartCoroutine(Fail());
-                    AudioManager.Play(AudioClipName.BadInput);
+                    AudioManager.Play(AudioClipName.Lvl3BadInput);
                 }
             }
         }

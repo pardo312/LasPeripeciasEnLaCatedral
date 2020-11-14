@@ -41,6 +41,7 @@ public class PlayerHealth : IntEventInvoker
         {
             hasInvulnerability = true;
             lifes -= 1;
+            AudioManager.Play(AudioClipName.Lvl1Damage);
             if (lifes <= 0)
             {
                 gameLostEvent.Invoke(0);
