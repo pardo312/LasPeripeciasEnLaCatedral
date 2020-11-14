@@ -9,6 +9,7 @@ public class StairClimber : PlayerController
 	[HideInInspector]public bool canMove = true;
 	private float initialGravityScale;
 	private Animator animator;
+	private bool initSound;
 
 	protected override void Start()
     {
@@ -21,12 +22,24 @@ public class StairClimber : PlayerController
     {
 		if(canMove)
 		{
+			
+			SoundFXManager sfxManager = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
 			base.CheckInput();
 			if (isClimbing)
 			{
 				velocity.y = Input.GetAxisRaw(AxisName.Vertical.ToString()) * climbSpeed;
 			}
-
+			if(velocity.x != 0){
+				if(!initSound)
+				{
+					sfxManager.Play("Walk");
+					initSound=true;
+				}
+			}
+			else{
+				initSound=false;	
+				sfxManager.StopPlaying("Walk");
+			}
 			animator.SetBool(Lvl2PlayerAnimStates.Walking.ToString(), Input.GetButton(AxisName.Horizontal.ToString()));
 		}
 	}
