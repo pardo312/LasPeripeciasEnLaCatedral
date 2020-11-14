@@ -16,7 +16,7 @@ public class LapseTimer : MonoBehaviour
 
 	LapsePassedEvent lapsePassedEvent = new LapsePassedEvent();
 
-	private bool isRunning = false;
+	public bool isRunning = false;
 	
 	#endregion
 	
