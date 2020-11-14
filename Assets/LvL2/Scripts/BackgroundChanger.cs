@@ -28,37 +28,33 @@ public class BackgroundChanger : MonoBehaviour
 
     private void Update()
     {
+        
         timerText.text = ((int)lapseTimer.elapsedSeconds).ToString();
-        if(checkIfEndLevel.gotSculptures!=2)
-        {
-            if((int)lapseTimer.elapsedSeconds==40){
-                lapseTimer.elapsedSeconds=41f;
-                background1.SetActive(false);
-                background2.SetActive(true);
-
-                Animator anim;
-                if(estatua1.TryGetComponent<Animator>(out anim) &&estatua2.TryGetComponent<Animator>(out anim))
-                    StartCoroutine(startCutsceneTrigger("Deterioro2")); 
-            }
-            else if((int)lapseTimer.elapsedSeconds==80){
-                lapseTimer.elapsedSeconds=81f;
-                background1.SetActive(true);
-                background2.SetActive(false);   
-
-                Animator anim;
-                if(estatua1.TryGetComponent<Animator>(out anim) &&estatua2.TryGetComponent<Animator>(out anim))
-                StartCoroutine(startCutsceneTrigger("Deterioro3"));
-            }
-            else if((int)lapseTimer.elapsedSeconds==120){
-                lapseTimer.elapsedSeconds=121f;
-                background1.SetActive(false);
-                background2.SetActive(true);
-
-                Animator anim;
-                if(estatua1.TryGetComponent<Animator>(out anim) &&estatua2.TryGetComponent<Animator>(out anim))
-                StartCoroutine(startCutsceneTrigger("Deterioro4"));
-            }
+        if((int)lapseTimer.elapsedSeconds==30){
+            lapseTimer.elapsedSeconds=31f;
+            background1.SetActive(false);
+            background2.SetActive(true);
+            MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
+            musicManager.SpeedUpSong(0.3f);
+            StartCoroutine(startCutsceneTrigger("Deterioro2")); 
         }
+        else if((int)lapseTimer.elapsedSeconds==60){
+            lapseTimer.elapsedSeconds=61f;
+            background1.SetActive(true);
+            background2.SetActive(false);
+            MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
+            musicManager.SpeedUpSong(0.3f);  
+            StartCoroutine(startCutsceneTrigger("Deterioro3"));
+        }
+        else if((int)lapseTimer.elapsedSeconds==90){
+            lapseTimer.elapsedSeconds=91f;
+            background1.SetActive(false);
+            background2.SetActive(true);
+            MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
+            musicManager.SpeedUpSong(0.3f);
+            StartCoroutine(startCutsceneTrigger("Deterioro4"));
+        }
+        
         else
         {
            if((int)lapseTimer.elapsedSeconds==120){
@@ -69,28 +65,43 @@ public class BackgroundChanger : MonoBehaviour
     }
     IEnumerator startCutsceneTrigger(string triggerToActivate){
         
+        //Que asco de codigo ;_v no merezco ni progamar xd
+        Animator anim;
+        MusicManager musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();  
+        musicManager.SpeedUpSong(0.3f);
         StairClimber playerMove = GameObject.Find("Restorer").GetComponent<StairClimber>();
         playerMove.stopMovement();
-        playerMove.canMove = false;
-        lapseTimer.isRunning = false;
-
-        cinemachine.Follow = estatua1.transform;
-        estatua1.GetComponent<Animator>().SetTrigger(triggerToActivate);
-        yield return new WaitForSeconds(3);
-
-        cinemachine.Follow = estatua2.transform;
-        estatua2.GetComponent<Animator>().SetTrigger(triggerToActivate);
-        yield return new WaitForSeconds(3);
-
-        cinemachine.Follow = GameObject.Find("Restorer").transform;
-        lapseTimer.isRunning = true;
-
-        if(triggerToActivate.Equals("Deterioro4")){
-            Time.timeScale=0f;
+        if(estatua2.TryGetComponent<Animator>(out anim) || estatua1.TryGetComponent<Animator>(out anim)){
+            SoundFXManager soundFXManager = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
+            soundFXManager.StopPlayingAll();
             playerMove.canMove = false;
-            endScreen.SetActive(true);
+            lapseTimer.isRunning = false;
         }
-        else
-            playerMove.canMove = true;
+        if(estatua1.TryGetComponent<Animator>(out anim)){
+            cinemachine.Follow = estatua1.transform;
+            estatua1.GetComponent<Animator>().SetTrigger(triggerToActivate);
+            yield return new WaitForSeconds(3);
+        }
+        if(estatua2.TryGetComponent<Animator>(out anim)){
+            cinemachine.Follow = estatua2.transform;
+            estatua2.GetComponent<Animator>().SetTrigger(triggerToActivate);
+            yield return new WaitForSeconds(3);
+        }
+
+        if(estatua2.TryGetComponent<Animator>(out anim) || estatua1.TryGetComponent<Animator>(out anim)){
+            cinemachine.Follow = GameObject.Find("Restorer").transform;
+            lapseTimer.isRunning = true;
+            if(triggerToActivate.Equals("Deterioro4")){
+                Time.timeScale=0f;
+                playerMove.canMove = false;
+                endScreen.SetActive(true);
+                musicManager.StopPlayingAll();
+                musicManager.Play("MusicLost");
+            }
+            else
+                playerMove.canMove = true;
+
+        }
+
     }
 }
