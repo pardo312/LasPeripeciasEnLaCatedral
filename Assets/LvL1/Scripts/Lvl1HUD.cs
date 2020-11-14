@@ -25,7 +25,7 @@ public class Lvl1HUD: MonoBehaviour
 				Text currentItemText = txtItems[j];
 				if (currentItemText.name == currentPickableFallingItem.name)
 				{
-					currentItemText.text = $"0 / {currentPickableFallingItem.amountToCollect}";
+					currentItemText.text = $"0/{currentPickableFallingItem.amountToCollect}";
 				}
 			}
 		}
