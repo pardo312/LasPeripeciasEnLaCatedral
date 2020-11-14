@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/VideoAnimations/Video1.unity
     guid: ed2e3cd8ba48e104393c31ce277d5826
   - enabled: 1
+    path: Assets/VideoAnimations/Video1.1.unity
+    guid: f82d57258ac9c4b478b7e4d7d8cc5dd0
+  - enabled: 1
+    path: Assets/VideoAnimations/Video1.2.unity
+    guid: f1f225642af22174c869cff4c96acf4d
+  - enabled: 1
     path: Assets/LvL1/Scenes/LvL1Alpha.unity
     guid: 052aa2d9adf20024e8335b2b64148e7f
   - enabled: 1

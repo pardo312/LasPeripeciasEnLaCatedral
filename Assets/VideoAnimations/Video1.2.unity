@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 298241414}
   - component: {fileID: 298241416}
   m_Layer: 0
-  m_Name: Video3
+  m_Name: Video1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298241413}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 734aefb8d595ff2419a89b63e529a709, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 61d04bd8c346dab4782171b219a87c92, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1820018321}
@@ -278,7 +278,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: https://i.imgur.com/Qq7zVae.mp4
+  m_Url: https://i.imgur.com/7GX3Isi.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -400,7 +400,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 203360973}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: HandleCreditsButtonOnClickEvent
+        m_MethodName: HandleLvL1ButtonOnClickEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
