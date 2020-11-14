@@ -14,8 +14,16 @@ public class Instrucciones : MonoBehaviour
     IEnumerator LateStart(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject.Find("Restorer").GetComponent<StairClimber>().canMove = false;
-        GameObject.Find("BackgroundChanger").GetComponent<LapseTimer>().isRunning = false;
+        GameObject a = GameObject.Find("Restorer");
+        if (a)
+        {
+            a.GetComponent<StairClimber>().canMove = false;
+        }
+        GameObject b = GameObject.Find("BackgroundChanger");
+        if (b)
+        {
+            b.GetComponent<LapseTimer>().isRunning = false;
+        }
 
         for(int i=0;i<instruccionesPages.Length;i++){
 
@@ -28,8 +36,17 @@ public class Instrucciones : MonoBehaviour
             else{
                 page.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate () { 
                     this.gameObject.SetActive(false);
-                    GameObject.Find("Restorer").GetComponent<StairClimber>().canMove = true;
-                    GameObject.Find("BackgroundChanger").GetComponent<LapseTimer>().isRunning = true;
+                    GameObject c = GameObject.Find("Restorer");
+                    if (c)
+                    {
+                        c.GetComponent<StairClimber>().canMove = true;
+                    }
+                    GameObject d = GameObject.Find("Restorer");
+                    if (d)
+                    {
+                        GameObject.Find("BackgroundChanger").GetComponent<LapseTimer>().isRunning = true;
+                    }
+                   
                 });
             }
         }

@@ -5512,8 +5512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000011444092, y: -283.4}
-  m_SizeDelta: {x: 1658.5781, y: 379.90417}
+  m_AnchoredPosition: {x: 37.9, y: -310}
+  m_SizeDelta: {x: 1627.3818, y: 379.90417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032586175
 MonoBehaviour:
@@ -5535,7 +5535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LAS ESCULTURAS SE DETERIORARON!
+  m_text: "\xA1QU\xC9 MAL!\nLas esculturas se deterioraron!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5598,7 +5598,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 4.4565644, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7814,7 +7814,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1\xA1BIEN HECHO,RECUPERASTE LAS ESCULPTURAS!!"
+  m_text: "\xA1BIEN HECHO!\nRecuperaste las esculturas!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11716,13 +11716,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780809086930800358, guid: 4057cfbf71bd5484d993c15a873c29de,
         type: 3}
+      propertyPath: instruccionesPages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780809086930800358, guid: 4057cfbf71bd5484d993c15a873c29de,
+        type: 3}
       propertyPath: instruccionesPages.Array.data[0]
       value: 
-      objectReference: {fileID: 4712738260630545716, guid: 7c165ce6a3b51944f8b7558a9cbddaf9,
+      objectReference: {fileID: 4712738260630545716, guid: f04867c2138779e468ea12fae4e7ab09,
         type: 3}
     - target: {fileID: 1780809086930800358, guid: 4057cfbf71bd5484d993c15a873c29de,
         type: 3}
       propertyPath: instruccionesPages.Array.data[1]
+      value: 
+      objectReference: {fileID: 4712738260630545716, guid: 433dcfc3c12889447b725486aa768353,
+        type: 3}
+    - target: {fileID: 1780809086930800358, guid: 4057cfbf71bd5484d993c15a873c29de,
+        type: 3}
+      propertyPath: instruccionesPages.Array.data[2]
       value: 
       objectReference: {fileID: 4712738260630545716, guid: 3b7149b98ca461e4183db66f72b28ca8,
         type: 3}

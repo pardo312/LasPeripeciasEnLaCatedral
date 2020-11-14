@@ -28,6 +28,11 @@ public class StairClimber : PlayerController
 			if (isClimbing)
 			{
 				velocity.y = Input.GetAxisRaw(AxisName.Vertical.ToString()) * climbSpeed;
+				animator.SetBool("Climbing", true);
+			}
+            else
+            {
+				animator.SetBool("Climbing", false);
 			}
 			if(velocity.x != 0){
 				if(!initSound)

@@ -316,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 298241414}
   btn: {fileID: 988357098}
-  nextVideoSceneName: 
+  nextVideoSceneName: LvL1Alpha
 --- !u!1 &988357096
 GameObject:
   m_ObjectHideFlags: 0

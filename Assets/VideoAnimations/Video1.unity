@@ -316,7 +316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 298241414}
   btn: {fileID: 988357098}
-  lastVideo: 0
   nextVideoSceneName: Video1.1
 --- !u!1 &988357096
 GameObject:
@@ -401,7 +400,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 203360973}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: HandleLvL1ButtonOnClickEvent
+        m_MethodName: HandleVideo11ButtonOnClickEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

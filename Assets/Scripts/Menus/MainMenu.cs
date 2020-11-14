@@ -16,6 +16,16 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneName.Video1.ToString());
     }
 
+    public void HandleVideo11ButtonOnClickEvent()
+    {
+        SceneManager.LoadScene("Video1.1");
+    }
+
+    public void HandleVideo12ButtonOnClickEvent()
+    {
+        SceneManager.LoadScene("Video1.2");
+    }
+
     public void HandleVideo2ButtonOnClickEvent()
     {
         SceneManager.LoadScene(SceneName.Video2.ToString());
