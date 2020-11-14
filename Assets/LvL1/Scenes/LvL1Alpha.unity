@@ -364,7 +364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &184410577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,8 +378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palomino: {fileID: 1226851580}
-  spawnSecondsMin: 15
-  spawnSecondsMax: 20
+  spawnSecondsMin: 30
+  spawnSecondsMax: 60
   durationMin: 5
   durationMax: 10
   durationTimer: {fileID: 0}
@@ -2726,7 +2726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1226851581
 Rigidbody2D:
   serializedVersion: 4
