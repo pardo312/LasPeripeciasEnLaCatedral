@@ -17,7 +17,7 @@ public class Pickable : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Destroy(GetComponent<Animator>());
+            Destroy(GetComponent<CircleCollider2D>());
             checkIfEndLevel.gotSculptures++;
             transform.SetParent(collision.gameObject.transform);
             transform.localPosition = Vector3.zero;
