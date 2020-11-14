@@ -20,10 +20,10 @@ public class StairClimber : PlayerController
 
     protected override void CheckInput()
     {
+		SoundFXManager sfxManager = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
 		if(canMove)
 		{
 			
-			SoundFXManager sfxManager = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
 			base.CheckInput();
 			if (isClimbing)
 			{
@@ -41,6 +41,11 @@ public class StairClimber : PlayerController
 				sfxManager.StopPlaying("Walk");
 			}
 			animator.SetBool(Lvl2PlayerAnimStates.Walking.ToString(), Input.GetButton(AxisName.Horizontal.ToString()));
+		}
+		else
+		{
+			velocity = Vector2.zero;
+			sfxManager.StopPlaying("Walk");
 		}
 	}
 	public void stopMovement(){
