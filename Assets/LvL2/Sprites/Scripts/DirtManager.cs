@@ -35,7 +35,7 @@ public class DirtManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
             lastMouseMoveTime++;
             
-            quantityOfDirt-=0.001f;
+            quantityOfDirt-= Time.deltaTime;
 
             Color temp = currentDirtSprite.color;
             temp.a=quantityOfDirt;
