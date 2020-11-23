@@ -22,7 +22,16 @@ public class Lvl3GameManager : MonoBehaviour
         Initialize();
         EventManager.AddListener(EventName.GameWonEvent, HandleGameWonEvent);
         EventManager.AddListener(EventName.GameLostEvent, HandleGameLostEvent);
+        SceneManager.sceneLoaded += OnSceneLoaded;
         DontDestroyOnLoad(this);
+    }
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        if (!(scene.name == "Lvl3InitScene" || scene.name == "Limpieza" || scene.name == "Limpieza" || scene.name == "LvL4Colores" || scene.name == "Puzzle" || scene.name == "Reconstruction"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Initialize()

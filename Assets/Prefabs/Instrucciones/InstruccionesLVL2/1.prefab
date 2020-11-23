@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2621530325653342107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4680785736953748956
 RectTransform:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4712738260630545712}
   - component: {fileID: 8812825888085027877}
   m_Layer: 5
-  m_Name: 1.InstruccionesPageLVL2 1
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
